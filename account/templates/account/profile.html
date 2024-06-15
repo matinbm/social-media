@@ -3,17 +3,26 @@
 
 
 
-    <h2  style="text-align: center">
+    <h2 style="text-align: center">
         {{ user.username }}
     </h2>
-<div class="card">
+    <div class="card">
         {% for post in posts %}
             <a href="{{ post.get_absolute_url }}" class="card-body">
                 {{ post.body| truncatewords:5 }}
             </a>
         {% endfor %}
     </div>
+    <div class="create_post">
+        {% if request.user.id == user.id %}
+            <a href="{% url 'home:create_post' %}">
+                <button style="background-color: bisque">
+                    create
+                </button>
+            </a>
+        {% endif %}
 
+    </div>
 
 
 {% endblock %}
