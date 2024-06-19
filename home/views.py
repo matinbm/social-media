@@ -10,7 +10,9 @@ from django.utils.text import slugify
 
 class HomeView(View):
     def get(self, request):
-        posts = Post.objects.all()
+        # order_by method mesle all method ast yaani hame post haro az DB miare ba in tafavot ke ba oon tartibi ke khodemon taiin mikonim set mikone
+        posts = Post.objects.order_by('-created')
+        # posts = Post.objects.all()
         return render(request, 'home/index.html', {'posts': posts})
 
 
