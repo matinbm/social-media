@@ -21,6 +21,15 @@
                 </button>
             </a>
         {% endif %}
+    <div >
+        {% if request.user.id != user.id and is_following%}
+            <a href="{% url 'account:user_follow' user_id %}">
+                <button style="background-color: bisque">
+                    Follow
+                </button>
+            </a>
+        {% endif %}
+    </div>
 
     </div>
 
